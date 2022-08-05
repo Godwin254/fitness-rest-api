@@ -6,7 +6,8 @@ const getAllWorkouts = (req, res) => {
 
     // get all workouts from the service layer
     const allWorkouts = workoutService.getAllWorkouts();
-    res.send("GET all workouts");
+
+    res.send({status: "ok", data: allWorkouts});
 }
 
 const getSingleWorkout = (req, res) => {
