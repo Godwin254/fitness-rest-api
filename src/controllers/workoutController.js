@@ -1,6 +1,7 @@
 
 // initialize the service 
 const workoutService = require('../services/workoutService');
+
 // handle workout creation
 const getAllWorkouts = (req, res) => {
 
@@ -12,9 +13,17 @@ const getAllWorkouts = (req, res) => {
 
 const getSingleWorkout = (req, res) => {
 
+    const { workoutId } = req.params;
+
+    //check if workout exists
+    if (!workoutId) {
+        return; //handle later
+    }
+
+
     // get single workout from the service layer
-    const singleWorkout = workoutService.getSingleWorkout();
-    res.send(`GET single workout`);
+    const workout = workoutService.getSingleWorkout(workoutId);
+    res.send({status: "Ok", data: workout});
 }
 
 const createNewWorkout = (req, res) => {
