@@ -63,9 +63,16 @@ const updateSingleWorkout = (req, res) => {
 
 const deleteSingleWorkout = (req, res) => {
 
+    const {
+        params: { workoutId}
+    } = req
+
+    if (!workoutId){
+        return; //handle later
+    }
     // delete single workout in the service layer
-    workoutService.deleteSingleWorkout();
-    res.send(`Delete single existing workout`);
+    workoutService.deleteSingleWorkout(workoutId);
+    res.status(204).send({status: "ok"});
 }
 
 module.exports = {
