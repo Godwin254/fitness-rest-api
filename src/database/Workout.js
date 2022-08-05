@@ -7,6 +7,17 @@ const getAllWorkouts = ( ) => {
     return DB.workouts;
 }
 
+//accessing a single workout
+const getSingleWorkout = (workoutId) => {
+    const workout = DB.workouts.find(workout => workout.id === workoutId);
+
+    if (!workout) {
+        return; //handle later
+    }
+
+    return workout;
+}
+
 //create new workout to the DB
 const createNewWorkout = (newWorkout) => {
     

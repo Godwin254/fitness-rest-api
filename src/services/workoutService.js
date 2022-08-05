@@ -10,8 +10,8 @@ const getAllWorkouts = () => {
     return allWorkouts;
 }
 
-const getSingleWorkout = () => {
-    const workout = Workout.getSingleWorkout();
+const getSingleWorkout = (workoutId) => {
+    const workout = Workout.getSingleWorkout(workoutId);
     return workout;
 }
 
