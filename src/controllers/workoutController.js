@@ -18,10 +18,19 @@ const getSingleWorkout = (req, res) => {
 }
 
 const createNewWorkout = (req, res) => {
+    const { name, mode, equipment, exercises, trainerTips } = req.body; //retrieve the workout data from the request body
 
+    // create new workout object
+    const newWorkout = {
+        name,
+        mode,
+        equipment,
+        exercises,
+        trainerTips
+    }
     // create new workout in the service layer
-    const newWorkout = workoutService.createNewWorkout();
-    res.send("Create new workout");
+    const createdWorkout = workoutService.createNewWorkout(newWorkout);
+    res.status(201).send({status: "ok", data: createdWorkout});
 }
 
 const updateSingleWorkout = (req, res) => {
