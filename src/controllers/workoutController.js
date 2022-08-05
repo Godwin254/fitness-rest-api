@@ -13,7 +13,9 @@ const getAllWorkouts = (req, res) => {
 
 const getSingleWorkout = (req, res) => {
 
-    const { workoutId } = req.params;
+    const { 
+        params: { workoutId }
+     } = req;
 
     //check if workout exists
     if (!workoutId) {
