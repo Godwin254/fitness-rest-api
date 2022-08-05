@@ -24,4 +24,4 @@ const createNewWorkout = (newWorkout) => {
     return newWorkout;
 }
 
-module.exports = { getAllWorkouts };
+module.exports = { getAllWorkouts, createNewWorkout };

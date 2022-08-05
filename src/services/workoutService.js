@@ -20,8 +20,8 @@ const createNewWorkout = (newWorkout) => {
     const workoutToInsert = {
         ...newWorkout,
         id: uuid(),
-        createdAt: new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}),
-        updatedAt: new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"})
+        createdAt: new Date().toDateString("en-US", {timeZone: "Africa/Nairobi"}),
+        updatedAt: new Date().toDateString("en-US", {timeZone: "Africa/Nairobi"})
     };
 
     const createdWorkout = Workout.createNewWorkout(workoutToInsert);
