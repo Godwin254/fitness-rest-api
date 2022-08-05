@@ -45,8 +45,20 @@ const createNewWorkout = (req, res) => {
 const updateSingleWorkout = (req, res) => {
 
     // update single workout in the service layer
-    const updatedWorkout = workoutService.updateSingleWorkout();
-    res.send(`Update single existing workout`);
+    const {
+        body,
+        params: { workoutId }
+
+    } = req;
+
+    //validate if the id exists
+    if (!workoutId) {
+        return; //handle later
+    }
+
+    // update single workout in the service layer
+    const updatedWorkout = workoutService.updateSingleWorkout(workoutId, body);
+    res.send({status: "ok", data: updatedWorkout});
 }
 
 const deleteSingleWorkout = (req, res) => {
