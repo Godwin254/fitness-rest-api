@@ -60,4 +60,21 @@ const updateSingleWorkout = (workoutId, changes) => {
 
 }
 
+// delete a single workout
+const deleteSingleWorkout = (workoutId) => {
+    //check if index exists
+    const indexForDelete = DB.workouts.findIndex(workout => workout.id === workoutId);
+
+    //if index doesn't exist -1 
+    if (indexForDelete === -1) {
+        throw new Error('Workout does not exist');
+        return;
+    }
+
+    DB.workouts.splice(indexForDelete, 1);
+
+    saveToDatabase(DB);
+    return;
+}
+
 module.exports = { getAllWorkouts, createNewWorkout };
