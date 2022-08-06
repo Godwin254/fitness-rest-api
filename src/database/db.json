@@ -88,23 +88,23 @@
     },
     {
       "name": "Core Cardio Muscle",
-      "mode": "AMRAP 220",
+      "mode": "STRAIGHT JOGS 2200",
       "equipment": [
         "rack",
         "barbell",
-        "abmat"
+        "rope"
       ],
       "exercises": [
-        "15 toes to bars",
-        "10 thrusters",
-        "30 abmat sit-ups"
+        "5 toes to bars",
+        "5 thrusters",
+        "6 abmat sit-ups"
       ],
       "trainerTips": [
         "Split your toes to bars into two sets maximum",
         "Go unbroken on the thrusters",
         "Take the abmat sit-ups as a chance to normalize your breath"
       ],
-      "id": "5de38bf4-b41c-4375-937a-5ab150d8003a",
+      "id": "6b1bc7a1-98af-4d3a-8ed0-2a442e7607e7",
       "createdAt": "Fri Aug 05 2022",
       "updatedAt": "Fri Aug 05 2022"
     }

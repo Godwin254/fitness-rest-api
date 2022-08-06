@@ -32,7 +32,7 @@ const createNewWorkout = (newWorkout) => {
 
 const updateSingleWorkout = (workoutId, changes) => {
     const updatedWorkout = Workout.updateSingleWorkout(workoutId, changes);
-    return;
+    return updatedWorkout;
 }
 
 const deleteSingleWorkout = (workoutId) => {
