@@ -44,9 +44,16 @@ const createNewWorkout = (req, res) => {
         exercises,
         trainerTips
     }
-    // create new workout in the service layer
-    const createdWorkout = workoutService.createNewWorkout(newWorkout);
-    res.status(201).send({status: "ok", data: createdWorkout});
+    
+    try{
+        // create new workout in the service layer
+        const createdWorkout = workoutService.createNewWorkout(newWorkout);
+        res.status(201).send({ status: "ok", data: createdWorkout });
+    }catch(error){
+        res
+            .status( error?.status || 500)
+            .send({status: "FAILED", data: {error: error?.message || error}})
+    }
 }
 
 const updateSingleWorkout = (req, res) => {

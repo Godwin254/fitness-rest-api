@@ -25,9 +25,12 @@ const createNewWorkout = (newWorkout) => {
         updatedAt: new Date().toDateString("en-US", {timeZone: "Africa/Nairobi"})
     };
 
-    const createdWorkout = Workout.createNewWorkout(workoutToInsert);
-
-    return createdWorkout;
+    try{
+        const createdWorkout = Workout.createNewWorkout(workoutToInsert);
+        return createdWorkout;
+    }catch(error){
+        throw error;
+    }
 }
 
 const updateSingleWorkout = (workoutId, changes) => {
