@@ -31,6 +31,11 @@ const getSingleWorkout = (req, res) => {
 const createNewWorkout = (req, res) => {
     const { name, mode, equipment, exercises, trainerTips } = req.body; //retrieve the workout data from the request body
 
+    if(!name || !mode || !equipment || !exercises || !trainerTips) {
+        res.status(400).send({status: "FAILED", data: {error: "One of the keys is missing or empty {name, mode, equipment, exercises, trainerTips}"}});
+        return; //handle later
+    }
+
     // create new workout object
     const newWorkout = {
         name,
