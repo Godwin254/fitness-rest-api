@@ -19,13 +19,24 @@ const getSingleWorkout = (req, res) => {
 
     //check if workout exists
     if (!workoutId) {
+        res
+            .status(400)
+            .send({status: "FAILED",
+                data: {error: "Workout id is missing"}
+            });
         return; //handle later
     }
 
 
-    // get single workout from the service layer
-    const workout = workoutService.getSingleWorkout(workoutId);
-    res.send({status: "Ok", data: workout});
+    try{
+        // get single workout from the service layer
+        const workout = workoutService.getSingleWorkout(workoutId);
+        res.send({ status: "Ok", data: workout });
+    }catch(error){
+        res
+            .status( error?.status || 500)
+            .send({status: "FAILED", data: {error: error?.message || error}})
+    }
 }
 
 const createNewWorkout = (req, res) => {
@@ -67,12 +78,22 @@ const updateSingleWorkout = (req, res) => {
 
     //validate if the id exists
     if (!workoutId) {
-        return; //handle later
+        res
+            .status(400)
+            .send({status: "FAILED", data: {error: "Workout id is missing"}});
+       
     }
 
-    // update single workout in the service layer
-    const updatedWorkout = workoutService.updateSingleWorkout(workoutId, body);
-    res.send({status: "ok", data: updatedWorkout});
+    try{
+        // update single workout in the service layer
+        const updatedWorkout = workoutService.updateSingleWorkout(workoutId, body);
+        res.send({ status: "ok", data: updatedWorkout });
+    }catch(error){
+        res
+            .status(error?.status || 500)
+            .send({status: "FAILED", data: {error: error?.message || error}})
+
+    }
 }
 
 const deleteSingleWorkout = (req, res) => {
@@ -82,11 +103,23 @@ const deleteSingleWorkout = (req, res) => {
     } = req
 
     if (!workoutId){
-        return; //handle later
+        res
+            .status(400)
+            .send({
+                status: "FAILED",
+                data: { error: "Parameter ':workoutId' can not be empty" },
+            });
     }
-    // delete single workout in the service layer
-    workoutService.deleteSingleWorkout(workoutId);
-    res.status(204).send({status: "ok"});
+    
+    try{
+        // delete single workout in the service layer
+        workoutService.deleteSingleWorkout(workoutId);
+        res.status(204).send({ status: "ok" });
+    }catch(error){
+        res
+            .status(error?.status || 500)
+            .send({ status: "FAILED", data: { error: error?.message || error } });
+    }
 }
 
 module.exports = {
