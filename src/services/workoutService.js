@@ -5,14 +5,22 @@ const Workout = require('../database/Workout');
 
 // service method to get all workouts (business logic)
 const getAllWorkouts = () => {
-    const allWorkouts = Workout.getAllWorkouts();
+    try{
+        const allWorkouts = Workout.getAllWorkouts();
+        return allWorkouts;
 
-    return allWorkouts;
+    }catch(error){
+        throw error;
+    }
 }
 
 const getSingleWorkout = (workoutId) => {
-    const workout = Workout.getSingleWorkout(workoutId);
-    return workout;
+    try{
+        const workout = Workout.getSingleWorkout(workoutId);
+        return workout;
+    }catch(error){
+        throw error;
+    }
 }
 
 const createNewWorkout = (newWorkout) => {
@@ -34,13 +42,21 @@ const createNewWorkout = (newWorkout) => {
 }
 
 const updateSingleWorkout = (workoutId, changes) => {
-    const updatedWorkout = Workout.updateSingleWorkout(workoutId, changes);
-    return updatedWorkout;
+    try{
+        const updatedWorkout = Workout.updateSingleWorkout(workoutId, changes);
+        return updatedWorkout;
+    }catch(error){
+        throw error;
+    }
 }
 
 const deleteSingleWorkout = (workoutId) => {
-    Workout.deleteSingleWorkout(workoutId);
-   // return; - nothing to be returned
+    try{
+        Workout.deleteSingleWorkout(workoutId);
+    }catch(error){
+        throw error;
+    }
+  
 }
 
 module.exports = {
