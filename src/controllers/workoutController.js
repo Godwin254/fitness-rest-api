@@ -5,10 +5,15 @@ const workoutService = require('../services/workoutService');
 // handle workout creation
 const getAllWorkouts = (req, res) => {
 
-    // get all workouts from the service layer
-    const allWorkouts = workoutService.getAllWorkouts();
-
-    res.send({status: "ok", data: allWorkouts});
+    try{
+        // get all workouts from the service layer
+        const allWorkouts = workoutService.getAllWorkouts();
+        res.send({ status: "ok", data: allWorkouts });
+    }catch(error){
+        res
+            .status(error?.status || 500)
+            .send({ status: "FAILED", data: { error: error?.message || error } });
+    }
 }
 
 const getSingleWorkout = (req, res) => {
